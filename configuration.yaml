@@ -1,0 +1,22 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.1.0/24 # or the specific Caddy host IP
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+sensor:
+  - platform: avanza_stock
+    stock: 155541
+    currency: USD
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+test

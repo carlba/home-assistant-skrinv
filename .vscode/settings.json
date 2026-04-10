@@ -1,0 +1,10 @@
+{
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "(^|/)(configuration|automations|scripts|scenes|secrets)\\.yaml$",
+        "cmd": "rsync -av --progress -e \"ssh -i /Users/cbackstrom/.ssh/id_ed25519 -p 22\" \"${file}\" \"root@homeassistant:/config/${fileBasename}\""
+      }
+    ]
+  }
+}
