@@ -3,8 +3,21 @@
     "commands": [
       {
         "match": "(^|/)(configuration|automations|scripts|scenes|secrets)\\.yaml$",
-        "cmd": "rsync -av --progress -e \"ssh -i /Users/cbackstrom/.ssh/id_ed25519 -p 22\" \"${file}\" \"root@homeassistant:/config/${fileBasename}\""
+        "cmd": "HASS_TOKEN=$(security find-generic-password -a \"$USER\" -s \"homeassistant-api-token\" -w 2>/dev/null); test -n \"$HASS_TOKEN\" || { echo \"RunOnSave: missing Keychain item homeassistant-api-token\"; exit 1; }; rsync -av --progress -e \"ssh -i /Users/cbackstrom/.ssh/id_ed25519 -p 22\" \"${file}\" \"root@homeassistant:/config/${fileBasename}\" && curl -fsS -o /dev/null -X POST http://homeassistant:8123/api/services/homeassistant/reload_all -H \"Authorization: Bearer $HASS_TOKEN\""
       }
     ]
+  },
+  "files.associations": {
+    "*.yaml": "home-assistant",
+    "compose.yml": "yaml",
+    "compose.yaml": "yaml",
+    "compose.*.yml": "yaml",
+    "compose.*.yaml": "yaml",
+    "docker-compose.yml": "yaml",
+    "docker-compose.yaml": "yaml",
+    "docker-compose.*.yml": "yaml",
+    "docker-compose.*.yaml": "yaml",
+    "esphome/**/*.yml": "esphome",
+    "esphome/**/*.yaml": "esphome"
   }
 }
