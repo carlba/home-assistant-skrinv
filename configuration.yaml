@@ -15,6 +15,19 @@ sensor:
     stock: 155541
     currency: USD
 
+prometheus:
+  namespace: homeassistant # metrics prefix, e.g. hass_sensor_temperature_c
+  filter:
+    include_domains:
+      - sensor
+      - binary_sensor
+      - light
+      - climate
+      - person
+      - device_tracker
+      - fan
+      - switch
+
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
