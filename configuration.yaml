@@ -28,6 +28,14 @@ prometheus:
       - fan
       - switch
 
+ingress:
+  reitti:
+    title: Reitti
+    icon: mdi:map-marker-path
+    url: https://reitti.lan
+    work_mode: iframe
+    ui_mode: toolbar
+
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
