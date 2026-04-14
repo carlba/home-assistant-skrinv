@@ -28,6 +28,30 @@ prometheus:
       - fan
       - switch
 
+rest_command:
+  send_gps_data:
+    url: 'http://geopulse.lan/api/homeassistant'
+    method: POST
+    headers:
+      content-type: 'application/json'
+      Authorization: !secret geopulse_bearer
+    payload: >
+      {
+        "device_id": "sm_s911b",
+        "timestamp": "{{ now().isoformat() }}",
+        "location": {
+          "latitude": {{ state_attr('device_tracker.sm_s911b', 'latitude') }},
+          "longitude": {{ state_attr('device_tracker.sm_s911b', 'longitude') }},
+          "accuracy": {{ state_attr('device_tracker.sm_s911b', 'gps_accuracy') | default(0, true) }},
+          "altitude": {{ state_attr('device_tracker.sm_s911b', 'altitude') | default(0, true) }},
+          "speed": {{ state_attr('device_tracker.sm_s911b', 'speed') | default(0, true) }}
+        },
+        "battery": {
+          "level": {{ state_attr('device_tracker.sm_s911b', 'battery_level') | default(states('sensor.sm_s911b_battery_level'), true) | default(0, true) }}
+        }
+      }
+
+
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml

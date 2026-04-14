@@ -1,1 +1,6 @@
-[]
+- alias: Send GPS data to server
+  trigger:
+    - platform: state
+      entity_id: device_tracker.sm_s911b
+  action:
+    - service: rest_command.send_gps_data
