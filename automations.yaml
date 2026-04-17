@@ -1,6 +1,39 @@
 - alias: Send GPS data to server
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: device_tracker.sm_s911b
-  action:
-    - service: rest_command.send_gps_data
+  actions:
+    - action: rest_command.send_gps_data
+
+  id: c5325b9273b44c239de902212290cd9b
+
+- id: '1776451585485'
+  alias: Turn on all lights when I return home
+  description: Turn on all lights when the tracked device returns home
+  triggers:
+    - entity_id: device_tracker.sm_s911b
+      to: not_home
+      trigger: state
+  conditions: []
+  actions:
+    - action: light.turn_on
+      target:
+        entity_id:
+          - light.all
+      data: {}
+  mode: single
+
+- id: '1776451608844'
+  alias: Turn off all lights when I leave home
+  description: Turn off all lights when the tracked device leaves home
+  triggers:
+    - entity_id: device_tracker.sm_s911b
+      to: not_home
+      trigger: state
+  conditions: []
+  actions:
+    - data: {}
+      action: light.turn_off
+      target:
+        entity_id: light.all
+  mode: single
