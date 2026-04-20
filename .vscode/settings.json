@@ -30,5 +30,12 @@
     "!secret scalar",
     "!env_var",
     "!input"
+  ],
+  "cSpell.words": [
+    "asuswrt",
+    "automations",
+    "geopulse",
+    "hass",
+    "isoformat"
   ]
 }

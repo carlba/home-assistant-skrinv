@@ -28,6 +28,12 @@ prometheus:
       - fan
       - switch
 
+person:
+  - name: Carl Bäckström
+    id: carl_backstrom
+    device_trackers:
+      - device_tracker.sm_s911b_lan
+
 rest_command:
   send_gps_data:
     url: 'http://geopulse.lan/api/homeassistant'
