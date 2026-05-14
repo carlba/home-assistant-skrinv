@@ -1,12 +1,3 @@
-- alias: Send GPS data to server
-  triggers:
-    - trigger: state
-      entity_id: device_tracker.sm_s911b
-  actions:
-    - action: rest_command.send_gps_data
-
-  id: c5325b9273b44c239de902212290cd9b
-
 - id: '1776451585485'
   alias: Turn on all lights when I return home
   description: Turn on all lights when the tracked device returns home
