@@ -3,7 +3,7 @@
     "commands": [
       {
         "match": "(^|/)(configuration|automations|scripts|scenes|secrets)\\.yaml$",
-        "cmd": "HASS_TOKEN=$(security find-generic-password -a \"$USER\" -s \"homeassistant-api-token\" -w 2>/dev/null); test -n \"$HASS_TOKEN\" || { echo \"RunOnSave: missing Keychain item homeassistant-api-token\"; exit 1; }; rsync -av --progress -e \"ssh -i /Users/cbackstrom/.ssh/id_ed25519 -p 22\" \"${file}\" \"root@homeassistant.lan:/config/${fileBasename}\" && curl -fsS -o /dev/null -X POST http://homeassistant.lan:8123/api/services/homeassistant/reload_all -H \"Authorization: Bearer $HASS_TOKEN\""
+        "cmd": "HASS_TOKEN=$(security find-generic-password -a \"$USER\" -s \"homeassistant-api-token\" -w 2>/dev/null); test -n \"$HASS_TOKEN\" || { echo \"RunOnSave: missing Keychain item homeassistant-api-token\"; exit 1; }; rsync -av --progress -e \"ssh -i /Users/cbackstrom/.ssh/id_ed25519 -p 22\" \"${file}\" \"root@homeassistant:/config/${fileBasename}\" && echo curl -fsS -o /dev/null -X POST http://homeassistant:/api/services/homeassistant/reload_all -H \"Authorization: Bearer $HASS_TOKEN\""
       }
     ]
   },
@@ -36,6 +36,7 @@
     "automations",
     "geopulse",
     "hass",
-    "isoformat"
+    "isoformat",
+    "ssdp"
   ]
 }

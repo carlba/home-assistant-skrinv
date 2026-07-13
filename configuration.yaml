@@ -1,5 +1,27 @@
-# Loads default set of integrations. Do not remove.
-default_config:
+# This picks a subset of the default_config: preset. More inforation https://www.home-assistant.io/integrations/default_config/
+backup: # Backups
+# bluetooth: # Bluetooth support
+config: # Configuration options
+# conversation: # Natural language conversation
+dhcp: # DHCP discovery
+# energy: # Energy dashboard
+file: # File integration
+# go2rtc: # Go2RTC media streaming for camera streaming
+history: # History and graphs
+homeassistant_alerts: # Home Assistant alerts
+# cloud: # Home Assistant Cloud
+image_upload: # Image uploads
+logbook: # Logbook
+media_source: # Media source
+mobile_app: # Mobile app support
+my: # My Home Assistant links
+ssdp: # SSDP discovery
+# stream: # Stream media from cameras and other sources
+sun: # Sun tracking
+usage_prediction: # Usage prediction of what entities the user is most likely to interact.
+usb: # USB support
+# webhook: # Webhooks
+zeroconf: # Zero-configuration discovery
 
 http:
   use_x_forwarded_for: true
@@ -11,6 +33,14 @@ http:
 # Load frontend themes from the themes folder
 frontend:
   themes: !include_dir_merge_named themes
+
+recorder:
+  purge_keep_days: 3
+  commit_interval: 300
+  auto_purge: true
+
+logger:
+  default: warning
 
 sensor:
   - platform: avanza_stock

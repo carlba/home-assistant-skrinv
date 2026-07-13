@@ -1,7 +1,10 @@
 ### Reload Home Assistant configuration
 @hass_token = {{$dotenv HASS_TOKEN}}
-POST http://homeassistant.lan:8123/api/services/homeassistant/reload_all
+POST http://homeassistant:8123/api/services/homeassistant/reload_all
 Authorization: Bearer {{hass_token}}
 Content-Type: application/json
-
-
+### Restart Home Assistant configuration
+@hass_token = {{$dotenv HASS_TOKEN}}
+POST http://homeassistant:8123/api/services/homeassistant/restart
+Authorization: Bearer {{hass_token}}
+Content-Type: application/json
