@@ -19,8 +19,7 @@
     "docker-compose.*.yaml": "yaml",
     "esphome/**/*.yml": "esphome",
     "esphome/**/*.yaml": "esphome"
-  }
-  ,
+  },
   "yaml.customTags": [
     "!include",
     "!include_dir_list",
@@ -34,9 +33,11 @@
   "cSpell.words": [
     "asuswrt",
     "automations",
+    "dmaker",
     "geopulse",
     "hass",
     "isoformat",
+    "miio",
     "ssdp"
   ]
 }

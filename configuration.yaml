@@ -48,6 +48,13 @@ sensor:
   - platform: avanza_stock
     stock: 19002
 
+fan:
+  - platform: xiaomi_miio_fan
+    name: Xiaomi Fans
+    host: 192.168.1.197
+    token: !secret xiaomi_fan_token
+    model: dmaker.fan.1c
+
 prometheus:
   namespace: homeassistant # metrics prefix, e.g. hass_sensor_temperature_c
   filter:
