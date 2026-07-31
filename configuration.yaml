@@ -12,9 +12,9 @@ homeassistant_alerts: # Home Assistant alerts
 # cloud: # Home Assistant Cloud
 image_upload: # Image uploads
 logbook: # Logbook
-media_source: # Media source
+# media_source: # Media source
 mobile_app: # Mobile app support
-my: # My Home Assistant links
+# my: # My Home Assistant links
 ssdp: # SSDP discovery
 # stream: # Stream media from cameras and other sources
 sun: # Sun tracking
@@ -50,7 +50,7 @@ sensor:
 
 fan:
   - platform: xiaomi_miio_fan
-    name: Xiaomi Fans
+    name: Xiaomi Fan
     host: 192.168.1.197
     token: !secret xiaomi_fan_token
     model: dmaker.fan.1c
