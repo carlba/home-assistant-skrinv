@@ -23,13 +23,6 @@ usb: # USB support
 # webhook: # Webhooks
 zeroconf: # Zero-configuration discovery
 
-http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - 192.168.1.0/24 # or the specific Caddy host IP
-  cors_allowed_origins:
-    - https://house-of-abbey.github.io
-
 # Load frontend themes from the themes folder
 frontend:
   themes: !include_dir_merge_named themes
@@ -67,12 +60,6 @@ prometheus:
       - device_tracker
       - fan
       - switch
-
-person:
-  - name: Carl Bäckström
-    id: carl_backstrom
-    device_trackers:
-      - device_tracker.sm_s911b_lan
 
 automation: !include automations.yaml
 script: !include scripts.yaml
